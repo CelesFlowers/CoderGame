@@ -12,7 +12,7 @@ import SuccessBuy from "./components/Success/SuccessBuy";
 import CanceledBuy from "./components/Canceled/CanceledBuy";
 import Favorites from "./components/Favorites/favorites";
 import axios from 'axios'
-axios.defaults.baseURL='http://localhost:3001/'
+axios.defaults.baseURL='https://codergameback-production.up.railway.app/'
 
 
 function App() {
