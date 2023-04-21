@@ -23,7 +23,7 @@ export const DELETE_FAV = "DELETE_FAV";
 export const getVideogames = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/videogames");
+      const response = await axios.get("/videogames");
       console.log(response);
       dispatch({ type: GET_VIDEOGAMES, payload: response.data });
     } catch (error) {
@@ -48,7 +48,7 @@ export const resetVideogames = () => {
 export const getGenres = () => {
   return async (dispatch) => {
     try {
-      const response = await axios.get("http://localhost:3001/genres");
+      const response = await axios.get("/genres");
       dispatch({ type: GET_GENRES, payload: response.data });
     } catch (error) {
       return window.alert("No se pudo hacer el pedido de géneros al servidor");
@@ -88,7 +88,7 @@ export const searchVideogames = (value) => {
 
 export const postUser = (payload) => {
   return async (dispatch) => {
-    const info = await axios.post("http://localhost:3001/user", payload);
+    const info = await axios.post("/user", payload);
     console.log(info);
     return info;
   };
@@ -96,7 +96,7 @@ export const postUser = (payload) => {
 
 export const postGame = (payload) => {
   return async (dispatch) => {
-    const info = await axios.post("http://localhost:3001/videogames", payload);
+    const info = await axios.post("/videogames", payload);
     console.log(info);
     return info;
   };
@@ -112,7 +112,7 @@ export const setPage = (payload) => {
 
 export const buyCoin = (payload) => {
   return async (dispatch) => {
-    const buy = await axios.post('http://localhost:3001/create-checkout-session', payload);
+    const buy = await axios.post('/create-checkout-session', payload);
     console.log(payload, 'hola')
     return buy;
   }
