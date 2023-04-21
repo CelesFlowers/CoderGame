@@ -10,7 +10,7 @@ export const CREATE_GAME = "CREATE_GAME";
 export const ORDER_RATING = "ORDER_RATING";
 export const RESET_VIDEOGAMES = "RESET_VIDEOGAMES";
 export const SET_PAGE = "SET_PAGE";
-export const BUY_COIN = 'BUY_COIN';
+export const BUY_COIN = "BUY_COIN";
 
 export const POST_USER = "POST_USER";
 export const CREATE_USER = "CREARE_USER";
@@ -18,7 +18,6 @@ export const LOGUIN_USER = "LOGUIN_USER";
 
 export const ADD_FAV = "ADD_FAV";
 export const DELETE_FAV = "DELETE_FAV";
-
 
 export const getVideogames = () => {
   return async (dispatch) => {
@@ -109,15 +108,13 @@ export const setPage = (payload) => {
   };
 };
 
-
 export const buyCoin = (payload) => {
   return async (dispatch) => {
-    const buy = await axios.post('/create-checkout-session', payload);
+    const buy = await axios.post('http://localhost:3001/create-checkout-session', payload);
     console.log(payload, 'hola')
     return buy;
-  }
-}
-
+  };
+};
 
 export const loguinUser = (payload) => {
   return {
@@ -126,13 +123,10 @@ export const loguinUser = (payload) => {
   };
 };
 
-export const addFav =(videogame)=>{
-  return {type: ADD_FAV, payload:videogame}
+export const addFav = (videogame) => {
+  return { type: ADD_FAV, payload: videogame };
+};
 
-}
-
-export const deleteFav =(id)=>{
-  return {type: DELETE_FAV, payload:id}
-
-}
-
+export const deleteFav = (id) => {
+  return { type: DELETE_FAV, payload: id };
+};
