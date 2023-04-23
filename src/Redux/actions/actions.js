@@ -87,7 +87,7 @@ export const searchVideogames = (value) => {
 
 export const postUser = (payload, token) => {
   return async (dispatch) => {
-    const info = await axios.post("http://localhost:3001/user", payload, token);
+    const info = await axios.post("/user", payload, token);
     console.log(info);
     return {
       type:POST_USER,
@@ -113,7 +113,7 @@ export const setPage = (payload) => {
 
 export const buyCoin = (payload) => {
   return async (dispatch) => {
-    const buy = await axios.post('http://localhost:3001/create-checkout-session', payload);
+    const buy = await axios.post('/create-checkout-session', payload);
     console.log(payload, 'hola')
     return buy;
   };
