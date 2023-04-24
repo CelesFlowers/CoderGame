@@ -14,7 +14,7 @@ import Favorites from "./components/Favorites/favorites";
 import VideoGames from "./components/VideoGames/videogames";
 
 import axios from 'axios'
-axios.defaults.baseURL='http://codergameback-production.up.railway.app/'
+axios.defaults.baseURL='https://codergameback-production.up.railway.app/'
 
 
 function App() {
