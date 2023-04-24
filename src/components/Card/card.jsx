@@ -62,80 +62,53 @@ function Card ({ name,image,released, price, description, id,deleteFav,addFav, o
         }, [myFavorites]);
 
 
-
-
-
-    return (
-        <div className={style.minibox}>
-        <Link className={style.minibox2} to={'/game/'+id}>
-            <div className={style.containerizquierda}>
-                <h2 className={style.title}>{name} </h2>
-                <img src={image} alt={name} width='150px' height="85px" />
-                <p>{released}</p>
-            </div>
-            <div>
-                <p>Description:</p> 
-            {description.length > 100 ? description.slice(0, 100) + " ...For more press!" : description}
-            </div>
-
-        </Link>
-
-            <div className={style.containerderecha}>
-            {isfav ? (
-                <button  onClick={handleFavorite}>✅<p> In the cart  </p></button>
-                ) : (
-                <button onClick={handleFavorite}>🛒${price}</button>
-                )}</div>
-        </div>
-        <div>
-          <p>Description:</p>
-          {description.length > 100
-            ? description.slice(0, 100) + " ...For more press!"
-            : description}
-        </div>
-      </Link>
-
-      <div className={style.containerderecha}>
-        {isAuthenticated ? (
-          isfav ? (
-            <button onClick={handleFavorite}>
-              ✅<p> In the cart </p>
-            </button>
-          ) : (
-            <button onClick={handleFavorite}>🛒${price}</button>
-          )
-        ) : isfav ? (
-          <Link>
-            {" "}
-            <Login />{" "}
+        return (
+          <div className={style.minibox}>
+          <Link className={style.minibox2} to={'/game/'+id}>
+              <div className={style.containerizquierda}>
+                  <h2 className={style.title}>{name} </h2>
+                  <img src={image} alt={name} width='150px' height="85px" />
+                  <p>{released}</p>
+              </div>
+              <div>
+                  <p>Description:</p> 
+              {description.length > 100 ? description.slice(0, 100) + " ...For more press!" : description}
+              </div>
+  
           </Link>
-        ) : (
-          <button onClick={handleFavorite}>🛒${price}</button>
-        )}
-      </div>
-    </div>
-  );
-}
-
-const mapDispatchToProps = (dispatch) => {
-  return {
-    addFav: (game) => {
-      dispatch(addFav(game));
-    },
-    deleteFav: (id) => {
-      dispatch(deleteFav(id));
-    },
+  
+              <div className={style.containerderecha}>
+              {isfav ? (
+                  <button  onClick={handleFavorite}>✅<p> In the cart  </p></button>
+                  ) : (
+                  <button onClick={handleFavorite}>🛒${price}</button>
+                  )}</div>
+          </div>
+  
+  
+      )
   };
-};
+  
+  const mapDispatchToProps = (dispatch) =>{
+      return {
+          addFav:(game)=>{dispatch(addFav(game))},
+          deleteFav:(id)=>{dispatch(deleteFav(id))}
+      }
+  }
+  
+  export function mapStateToProps(state){
+      return {
+          myFavorites:state.myFavorites,
+      }
+  }
+  
+  
+  
+  export default connect(
+      mapStateToProps,
+      // mapDispatchToProps,
+      {addFav,deleteFav}
+  )(Card);
 
-export function mapStateToProps(state) {
-  return {
-    myFavorites: state.myFavorites,
-  };
-}
 
-export default connect(
-  mapStateToProps,
-  // mapDispatchToProps,
-  { addFav, deleteFav }
-)(Card);
+   
