@@ -90,19 +90,27 @@ export const postUser = (payload, token) => {
     const info = await axios.post("/user", payload, token);
     console.log(info);
     return {
-      type:POST_USER,
+      type: POST_USER,
       payload,
-    }
+    };
   };
 };
 
-export const postGame = (payload) => {
+export const postGame = (payload, token) => {
   return async (dispatch) => {
     const info = await axios.post("/videogames", payload);
     console.log(info);
     return info;
   };
 };
+
+// export const postGame = (payload) => {
+//   return async (dispatch) => {
+//     const info = await axios.post("http://localhost:3001/videogames", payload);
+//     console.log(info);
+//     return info;
+//   };
+// };
 
 export const setPage = (payload) => {
   return {
@@ -133,3 +141,4 @@ export const addFav = (videogame) => {
 export const deleteFav = (id) => {
   return { type: DELETE_FAV, payload: id };
 };
+
