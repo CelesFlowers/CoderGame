@@ -26,10 +26,10 @@ function CoinBuyer() {
   
     const handleClick = async (e) => {
       e.preventDefault();
-      const {data} = await axios.post("http://localhost:3001/checkout", {input})
+      const {data} = await axios.post(`/checkout`, {input})
         setClientSecret(data.clientSecret);
         console.log(input, user, 'hola')
-        axios.post('http://localhost:3001/checkout/cargacoins', {input, user})  
+        axios.post(`/checkout/cargacoins`, {input, user})  
     }
   
     return (
