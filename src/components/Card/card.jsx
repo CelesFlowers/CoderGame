@@ -60,10 +60,13 @@ function Card ({ name,image,released, price, description, id,deleteFav,addFav, o
 
     return (
         <div className={style.minibox}>
+            <div className={style.title_container}>
+                <h1 className={style.title}>{name}</h1>
+            </div>
         <Link className={style.minibox2} to={'/game/'+id}>
             <div className={style.containerizquierda}>
-                <h2 className={style.title}>{name} </h2>
-                <img src={image} alt={name} width='150px' height="85px" />
+                
+                <img className="rounded" src={image} alt={name} width='150px' height="85px" />
                 <p>{released}</p>
             </div>
             <div>
@@ -75,10 +78,13 @@ function Card ({ name,image,released, price, description, id,deleteFav,addFav, o
 
             <div className={style.containerderecha}>
             {isfav ? (
-                <button  onClick={handleFavorite}>✅<p> In the cart  </p></button>
+                <button  onClick={handleFavorite}><p> ❌ REMOVE</p></button>
                 ) : (
-                <button onClick={handleFavorite}>🛒${price}</button>
-                )}</div>
+                <button  onClick={handleFavorite}>🛒 +ADD To Cart</button>
+                )}
+                
+                <p className={style.price}>${price} </p>
+                </div>
         </div>
 
 

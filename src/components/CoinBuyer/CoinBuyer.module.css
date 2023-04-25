@@ -1,23 +1,19 @@
-.CardElement {
-    border: 1px solid black;
-    color: white;
-    margin: 5px;
-}
-
 .container {
-    background-color: white;
-    width: 50%;
-    border-radius: 10px;
-    padding: 30px;
+    border: 1px solid white;
+    width: 30%;
+    padding: 1%;
+    background-color: rgba(79, 77, 77, 0.3);
     margin-top: 10%;
+    margin-left: 35%;
+    color: white;
+    border-radius: 10px;
 }
 
+.btn {
+    margin: 20px;
+}
 
 .inp {
-    margin: 10px;
+    height: 40px;
+    border-radius: 7px;
 }
-
-/* button{
-    margin: 10px;
-    margin-left: 43% ;
-} */
