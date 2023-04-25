@@ -14,7 +14,7 @@ import Favorites from "./components/Favorites/favorites";
 import VideoGames from "./components/VideoGames/videogames";
 
 import axios from 'axios'
-axios.defaults.baseURL='http://localhost3001/'
+axios.defaults.baseURL='http://localhost3001'
 
 
 function App() {
