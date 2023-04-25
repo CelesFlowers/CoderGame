@@ -11,8 +11,8 @@ ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <Auth0Provider
-        domain="dev-brqs52ydufaqghca.us.auth0.com"
-        clientId="7Y5WUlfdfJn2JDvdpJOTOvirHokm9VGZ"
+        domain="ddev-5j3qqtfths0frdeu.us.auth0.com"
+        clientId="5gO8jG2KYeQZzcwSNYWbHVPqwayBvG3f"
         authorizationParams={{
           redirect_uri: window.location.origin,
         }}
