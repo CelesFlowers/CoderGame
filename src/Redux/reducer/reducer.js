@@ -1,6 +1,7 @@
 import {
   GET_VIDEOGAMES,
   GET_GENRES,
+  GET_PLATFORMS,
   FILTER_VIDEOGAMES,
   FILTER_BY_GENRE,
   SEARCH_VIDEOGAMES,
@@ -14,7 +15,8 @@ import {
   SET_PAGE,
   ADD_FAV,
   DELETE_FAV,
-  POST_USER
+  POST_USER,
+  ADD_COMMENT
 
 
 } from "../actions/actions";
@@ -22,12 +24,14 @@ import {
 const initialState = {
   allVideogames: [],
   allGenres: [],
+  allPlatforms:[],
   myFavorites:[],
   renderedVideogames: [],
   toFilterByVideogames: [],
   toFilterByGenre: [],
   page: 1,
   userId: {},
+  comments: [],
 };
 
 export default function reducer(state = initialState, action) {
@@ -113,6 +117,12 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         allGenres: [...action.payload],
+      };
+
+      case GET_PLATFORMS:
+      return {
+        ...state,
+        allPlatforms: [...action.payload],
       };
 
     case ORDER_RATING:
@@ -223,14 +233,16 @@ export default function reducer(state = initialState, action) {
         }
       }
     case FILTER_BY_GENRE:
-      if (state.toFilterByVideogames.length) {
+      if (state.allVideogames.length) {
         const copyToFilterByGenre = [
-          ...state.toFilterByGenre.filter((videogame) => {
+          ...state.allVideogames.filter((videogame) => {
             return videogame.Genregames.some(
               (obj) => obj.name === action.payload
+              
             );
           }),
         ];
+        console.log(copyToFilterByGenre)
         return {
           ...state,
           renderedVideogames: [...copyToFilterByGenre],
@@ -280,6 +292,12 @@ export default function reducer(state = initialState, action) {
         userId: action.payload,
       };
 
+    case ADD_COMMENT:
+      return {
+        ...state,
+        comments: [...state.comments, action.payload],
+      };
+
     default:
       return { ...state };
     case CREATE_GAME:
@@ -287,4 +305,6 @@ export default function reducer(state = initialState, action) {
         ...state,
       };
   }
+
+  
 }

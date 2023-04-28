@@ -4,7 +4,7 @@ import "./style.css";
 import Detail from "./components/Details/details";
 import Home from "./components/Home/Home";
 import FormGames from "./components/FormGames/FormGames";
-import ProfileRender from "./components/Profile/ProfileRender";
+import ProfileRender from "./components/ProfileRender/ProfileRender";
 // import LoginRender from "./components/Login/LoginRender";
 import { ShoppingCartProvider } from "./components/ShoppingCart/ShoppingCartContext";
 import CoinBuyer from "./components/CoinBuyer/CoinBuyer";
@@ -12,34 +12,40 @@ import SuccessBuy from "./components/Success/SuccessBuy";
 import CanceledBuy from "./components/Canceled/CanceledBuy";
 import Favorites from "./components/Favorites/favorites";
 import VideoGames from "./components/VideoGames/videogames";
+<<<<<<< HEAD
 
 import axios from 'axios'
 axios.defaults.baseURL='https://codergameback-production.up.railway.app'
 
+=======
+import DashBoard from "./components/DashBoard/DashBoard";
+>>>>>>> 00d65b75a27b2095588c20fe0de43e3b1ecc9384
 
 function App() {
   return (
-  <ShoppingCartProvider>
-    <div class="fondo">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/createGame" element={<FormGames />} />
-        <Route path="/game/:id" element={<Detail />} />
-        <Route path="/profile" element={<ProfileRender />} />
-        {/* <Route path="/login" element={<LoginRender />} /> */}
+    <ShoppingCartProvider>
+      <div class="fondo">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/createGame" element={<FormGames />} />
+          <Route path="/game/:id" element={<Detail />} />
+          <Route path="/profile" element={<ProfileRender />} />
+          {/* <Route path="/login" element={<LoginRender />} /> */}
 
-        <Route path="/payment" element={<CoinBuyer />} />
+          <Route path="/payment" element={<CoinBuyer />} />
 
-        <Route path="/success" element={<SuccessBuy />} />
+          <Route path="/success" element={<SuccessBuy />} />
 
-        <Route path="/canceled" element={<CanceledBuy />} />
+          <Route path="/canceled" element={<CanceledBuy />} />
 
-        <Route path="/favorites" element={<Favorites />} />
+          <Route path="/favorites" element={<Favorites />} />
 
-        <Route path="/videogames" element={<VideoGames />} />
-      </Routes>
-    </div>
-  </ShoppingCartProvider>  
+          <Route path="/videogames" element={<VideoGames />} />
+
+          <Route path="/dashboard" element={<DashBoard />} />
+        </Routes>
+      </div>
+    </ShoppingCartProvider>
   );
 }
 
