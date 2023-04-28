@@ -12,14 +12,11 @@ import SuccessBuy from "./components/Success/SuccessBuy";
 import CanceledBuy from "./components/Canceled/CanceledBuy";
 import Favorites from "./components/Favorites/favorites";
 import VideoGames from "./components/VideoGames/videogames";
-<<<<<<< HEAD
 
 import axios from 'axios'
 axios.defaults.baseURL='https://codergameback-production.up.railway.app'
 
-=======
 import DashBoard from "./components/DashBoard/DashBoard";
->>>>>>> 00d65b75a27b2095588c20fe0de43e3b1ecc9384
 
 function App() {
   return (
