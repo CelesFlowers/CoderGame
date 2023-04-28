@@ -16,7 +16,7 @@ import VideoGames from "./components/VideoGames/videogames";
 import axios from 'axios'
 axios.defaults.baseURL='https://codergameback-production.up.railway.app'
 
-import DashBoard from "./components/DashBoard/DashBoard";
+//import DashBoard from "./components/DashBoard/DashBoard";
 
 function App() {
   return (
