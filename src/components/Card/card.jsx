@@ -6,7 +6,6 @@ import { addFav, deleteFav } from "../../Redux/actions/actions";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import Login from "../LoginLogout/Login";
-<<<<<<< HEAD
 
 function Card ({ name,image,released, price, description, id,deleteFav,addFav, onclose, myFavorites }) {
     const dispatch = useDispatch();
@@ -43,8 +42,6 @@ function Card ({ name,image,released, price, description, id,deleteFav,addFav, o
             }
             }
         };
-=======
->>>>>>> 00d65b75a27b2095588c20fe0de43e3b1ecc9384
 
 
 function Card({
@@ -72,7 +69,6 @@ function Card({
         await axios.delete("http://localhost:3001/user/favorites", {
           data: { idVideogame: id, idUser: user.sub },
         });
-<<<<<<< HEAD
         }, [myFavorites]);
 
 
@@ -123,7 +119,6 @@ export function mapStateToProps(state){
     return {
         myFavorites:state.myFavorites,
     }
-=======
         console.log("Game deleted successfully!");
         // Aquí podrías mostrar un mensaje de éxito al usuario, por ejemplo
       } catch (error) {
@@ -203,20 +198,12 @@ export function mapStateToProps(state) {
   return {
     myFavorites: state.myFavorites,
   };
->>>>>>> 00d65b75a27b2095588c20fe0de43e3b1ecc9384
 }
 
 
 
 export default connect(
-<<<<<<< HEAD
     mapStateToProps,
     // mapDispatchToProps,
     {addFav,deleteFav}
 )(Card);
-=======
-  mapStateToProps,
-  // mapDispatchToProps,
-  { addFav, deleteFav }
-)(Card);
->>>>>>> 00d65b75a27b2095588c20fe0de43e3b1ecc9384
