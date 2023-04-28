@@ -5,7 +5,7 @@ import { connect, useDispatch } from "react-redux";
 import { addFav, deleteFav } from "../../Redux/actions/actions";
 import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
-import Login from "../LoginLogout/Login";
+//import Login from "../LoginLogout/Login";
 
 
 function Card({
