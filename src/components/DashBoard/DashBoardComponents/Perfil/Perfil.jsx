@@ -16,7 +16,6 @@ export default () => {
     image: null,
     linkYoutube: "",
     description: "",
-    coverImage: "",
   });
 
   const handleChange = (e) => {
@@ -51,7 +50,7 @@ export default () => {
     const update = {
       sub: sub,
       // image: imageUrl,
-      image: input.image.length > 0 ? imageUrl : userInfo.profile.image,
+      image:  imageUrl ? imageUrl : userInfo.profile.image,
       linkYoutube:
         input.linkYoutube.length > 0
           ? input.linkYoutube
@@ -60,10 +59,6 @@ export default () => {
         input.description.length > 0
           ? input.description
           : userInfo.profile.description,
-      coverImage:
-        input.coverImage.length > 0
-          ? input.coverImage
-          : userInfo.profile.coverImage,
     };
     console.log(update, sub);
     await axios.put(`http://localhost:3001/user/profile`, update);
@@ -71,7 +66,6 @@ export default () => {
       image: null,
       linkYoutube: "",
       description: "",
-      coverImage: "",
     });
     alert("Your change is done bro!!");
   };
@@ -96,7 +90,7 @@ export default () => {
   return (
     <div className={style.container}>
       <div className="text-center">
-        <img src={userInfo?.profile.image || user?.picture} alt="F" />
+        <img className={style.profileImg} src={userInfo?.profile.image || user?.picture} alt="F" />
         <button onClick={editHandler}>
           <img className={style.pencil} src={pencil} alt="" />
         </button>
