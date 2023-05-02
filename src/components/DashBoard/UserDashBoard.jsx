@@ -1,14 +1,18 @@
 import { Card } from "@tremor/react";
+import TableBuys from "./DashBoardComponents/TableBuys/TableBuys";
 import TableUserGames from "./TableUserGames/TableUserGames";
 import TableUserReviews from "./TableUserReviews/TableUserReviews";
 
-const SellerDashBoard = () => {
+const UserDashBoard = () => {
   return (
-    <Card>
+    <div className="container">
       <TableUserGames />
+      <p></p>
       <TableUserReviews />
-    </Card>
+      <p></p>
+      <TableBuys />
+    </div>
   );
 };
 
-export default SellerDashBoard;
+export default UserDashBoard;
