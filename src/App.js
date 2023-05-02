@@ -15,7 +15,7 @@ import VideoGames from "./components/VideoGames/videogames";
 import DashBoard from "./components/DashBoard/DashBoard";
 
 import axios from 'axios'
-axios.defaults.baseURL='https://codergameback-production.up.railway.app'
+axios.defaults.baseURL='https://codergameback-production.up.railway.app/'
 
 //testeandoDeploy
 
