@@ -10,7 +10,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import Balance from "./DashBoardComponents/BalanceAdmi/BalanceAdmin";
+
 
 const DashBoard = () => {
   const { user } = useAuth0();
@@ -25,7 +25,6 @@ const DashBoard = () => {
     };
     loadData();
   }, []);
-
   return (
     <>
       <NavBar />
@@ -34,15 +33,17 @@ const DashBoard = () => {
 
         {/* aqui va la card profile
               aqui traer una dhasboard segun tu userRol */}
-        <Perfil />
-        {/* {userInfo === 'admin' ? <AdminDashBoard /> : userInfo === 'seller' ? <SellerDashBoard /> : <UserDashBoard />} */}
-        <AdminDashBoard/>
-
-        <Balance />
+        {userInfo?.rol === 'admin' 
+        ? <div className={style.cardContainer}><Perfil /><AdminDashBoard /></div> 
+        : userInfo?.rol === 'seller' 
+        ? <div className={style.cardContainer}><Perfil /><SellerDashBoard /></div> 
+        : <div className={style.cardContainer}><Perfil /><UserDashBoard /></div>}
+        
+        {/* <Perfil />
+        <AdminDashBoard/> */}        
         {/* <SellerDashBoard /> */}
         {/* <UserDashBoard/> */}
-      {/* </Card> */}
-    </div>
+      </div>
     </>
   );
 };

@@ -28,8 +28,12 @@ function CoinBuyer() {
       e.preventDefault();
       const {data} = await axios.post(`/checkout`, {input})
         setClientSecret(data.clientSecret);
+<<<<<<< HEAD
         console.log(input, user, 'hola')
         axios.post(`/checkout/cargacoins`, {input, user})  
+=======
+        axios.post('http://localhost:3001/checkout/cargacoins', {input, user})  
+>>>>>>> 7d4132cc09d76cc4f411969bd189f38908d8a643
     }
   
     return (
@@ -82,8 +86,6 @@ function CoinBuyer() {
 //                 }
 //                 );
                 
-//                 console.log(data)
-//                 console.log(user.sub)
 //                 if(data.status !== 'succeeded'){
 //                     navigate('/canceled');
 //                 }
