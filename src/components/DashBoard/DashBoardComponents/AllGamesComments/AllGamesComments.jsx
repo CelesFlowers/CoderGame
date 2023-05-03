@@ -34,6 +34,7 @@ export default () => {
                 <Table>
                     <TableHead>
                         <TableHeader>
+                          <TableRow>
                             <TableHeaderCell>ID</TableHeaderCell>
                             <TableHeaderCell>Name</TableHeaderCell>
                             <TableHeaderCell>Image</TableHeaderCell>
@@ -44,8 +45,9 @@ export default () => {
                             <TableHeaderCell>Description</TableHeaderCell>
                             <TableHeaderCell>Seller</TableHeaderCell>
                             <TableHeaderCell><img src={trash} alt="" /></TableHeaderCell>
-                        </TableHeader>
-                    </TableHead>
+                            </TableRow>
+                        </TableHeader>                    
+                    </TableHead>                
                     <TableBody>
                     {userInfo?.map((item) => (
                       <TableRow key={item.id}>
