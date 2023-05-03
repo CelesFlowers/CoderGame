@@ -41,7 +41,7 @@ export default () => {
                             <TableHeaderCell>Rating</TableHeaderCell>
                             <TableHeaderCell>Released</TableHeaderCell>
                             <TableHeaderCell>Download</TableHeaderCell>
-                            <TableHeaderCell>Description</TableHeaderCell>
+                            {/* <TableHeaderCell>Description</TableHeaderCell> */}
                             <TableHeaderCell>Seller</TableHeaderCell>
                             <TableHeaderCell><img src={trash} alt="" /></TableHeaderCell>
                             </TableRow>                                          
