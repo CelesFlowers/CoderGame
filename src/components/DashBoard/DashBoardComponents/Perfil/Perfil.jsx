@@ -1,19 +1,36 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { Card, Metric, Text, TextInput } from "@tremor/react";
+import { Metric, Text, TextInput } from "@tremor/react";
 import axios from "axios";
 import { useState } from "react";
 import { useEffect } from "react";
 import style from "./Perfil.module.css";
 import pencil from "./edit.svg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logout from "../../../LoginLogout/Logout";
+
+const validation = (input) => {
+  let errors = {};
+  let regex = /^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$/;
+  if (input.nickname.length > 32)errors.nickname = "can not have more than 32 characters";
+  if (input.description.length > 200)errors.description = "can not have more than 200 characters";
+  if (!regex.test(input.linkYoutube))errors.linkYoutube = 'it is not a YouTube link';
+  return errors;
+}
 
 export default () => {
   const { user } = useAuth0();
   const [userInfo, setUserInfo] = useState(null);
   const [isActive, setIsActive] = useState(false);
+  const [rolUser, setRolUser] = useState(null);
+  const [errors, setErrors] = useState({
+    image: null,
+    nickname: '',
+    linkYoutube: "",
+    description: "",
+  });
   const [input, setInput] = useState({
     image: null,
+    nickname: '',
     linkYoutube: "",
     description: "",
   });
@@ -23,6 +40,10 @@ export default () => {
       ...input,
       [e.target.name]: e.target.value,
     });
+    setErrors(validation({
+      ...input,
+      [e.target.name]: e.target.value,
+    }))
   };
 
   const editHandler = (e) => {
@@ -46,24 +67,29 @@ export default () => {
     const data = await response.json();
     const imageUrl = data.secure_url;
 
-    const sub = user.sub;
+    const sub = user?.sub;
     const update = {
       sub: sub,
       // image: imageUrl,
       image:  imageUrl ? imageUrl : userInfo.profile.image,
+      nickname: 
+        !errors.nickname && input.nickname.length > 0
+          ? input.nickname
+          : userInfo.profile.nickname,
       linkYoutube:
-        input.linkYoutube.length > 0
+        !errors.linkYoutube && input.linkYoutube.length > 0
           ? input.linkYoutube
           : userInfo.profile.linkYoutube,
       description:
-        input.description.length > 0
+        !errors.description && input.description.length > 0
           ? input.description
           : userInfo.profile.description,
     };
-    console.log(update, sub);
+    
     await axios.put(`http://localhost:3001/user/profile`, update);
     setInput({
       image: null,
+      nickname: '',
       linkYoutube: "",
       description: "",
     });
@@ -79,6 +105,14 @@ export default () => {
     };
     loadData();
   }, []);
+  
+  useEffect(() =>{
+    const loadData = async () =>{
+        const {data} = await axios(`http://localhost:3001/user/bytransaction/${user.sub}`);
+        setRolUser(data.rol);
+    }
+    loadData();
+},[]);
 
   const handleImageChange = (e) => {
     setInput((input) => ({
@@ -104,6 +138,14 @@ export default () => {
               onChange={(e) => handleImageChange(e)}
               placeholder="insert img link here!!"
             />
+            <label> Nickname:</label>
+            <TextInput
+              name="nickname"
+              value={input.nickname}
+              onChange={handleChange}
+              placeholder="Text Here!!"
+            />
+            {errors.nickname && <p>{errors.nickname}</p>}
             <label> Youtube Link:</label>
             <TextInput
               name="linkYoutube"
@@ -111,6 +153,7 @@ export default () => {
               onChange={handleChange}
               placeholder="Text Here!!"
             />
+            {errors.linkYoutube && <p>{errors.linkYoutube}</p>}
             <label> Descripcion:</label>
             <TextInput
               name="description"
@@ -118,20 +161,15 @@ export default () => {
               onChange={handleChange}
               placeholder="Text Here!!"
             />
-            <label> Cover Image:</label>
-            <TextInput
-              name="coverImage"
-              value={input.coverImage}
-              onChange={handleChange}
-              placeholder="Text Here!!"
-            />
+            {errors.description && <p>{errors.description}</p>}
+            <br/>
             <button>Confirm</button>
           </form>
         )}
         <h2>
-          {user?.given_name} - ID: ({userInfo?.profile.id})
+          {userInfo?.profile.nickname ? userInfo.profile.nickname : user?.nickname}
         </h2>
-        <h4>{user?.email}</h4>
+        {/* <h4>{user?.email}</h4> */}
         <p>Coins Balance:</p>
         <Metric>{userInfo?.balance.balance} coins.</Metric>
         <Link className="btn btn-outline-danger" to={"/payment"}>
@@ -141,6 +179,11 @@ export default () => {
         <Text>{userInfo?.profile.linkYoutube}</Text>
         <p>Description: </p>
         <Text>{userInfo?.profile.description}</Text>
+        {rolUser === 'client' && <button
+        onClick={() => {
+          alert('An admin will be in touch as soon as posible.')
+        }}
+        >Sell your games with us!!</button>}
         <Logout />
       </div>
     </div>
