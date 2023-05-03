@@ -170,7 +170,7 @@ export default () => {
           {userInfo?.profile.nickname ? userInfo.profile.nickname : user?.nickname}
         </h2>
         {/* <h4>{user?.email}</h4> */}
-        {rolUser?.rol === 'client' && <>
+        {rolUser?.rol == 'client' && <>
           <p>Coins Balance:</p>
           <Metric>{userInfo?.balance.balance} coins.</Metric>
           <Link className="btn btn-outline-danger" to={"/payment"}>
@@ -181,7 +181,7 @@ export default () => {
         <Text>{userInfo?.profile.linkYoutube}</Text>
         <p>Description: </p>
         <Text>{userInfo?.profile.description}</Text>
-        {rolUser?.rol === 'client' && !rolUser?.requestSeller && <button
+        {rolUser?.rol == 'client' && !rolUser?.requestSeller && <button
         onClick={ async () => {
           const sub = user?.sub;
           const response = await axios.post('/email/request/seller', {sub})
