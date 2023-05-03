@@ -32,8 +32,7 @@ export default () => {
             <button onClick={showBtn}><img src={plus} alt="" /></button>
             {show && (
                 <Table>
-                    <TableHead>
-                        <TableHeader>
+                    <TableHead>                     
                           <TableRow>
                             <TableHeaderCell>ID</TableHeaderCell>
                             <TableHeaderCell>Name</TableHeaderCell>
@@ -45,8 +44,7 @@ export default () => {
                             <TableHeaderCell>Description</TableHeaderCell>
                             <TableHeaderCell>Seller</TableHeaderCell>
                             <TableHeaderCell><img src={trash} alt="" /></TableHeaderCell>
-                            </TableRow>
-                        </TableHeader>                    
+                            </TableRow>                                          
                     </TableHead>                
                     <TableBody>
                     {userInfo?.map((item) => (
