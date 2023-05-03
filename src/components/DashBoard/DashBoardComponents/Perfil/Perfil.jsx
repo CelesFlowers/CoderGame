@@ -86,7 +86,7 @@ export default () => {
           : userInfo.profile.description,
     };
     
-    await axios.put(`http://localhost:3001/user/profile`, update);
+    await axios.put(`/user/profile`, update);
     setInput({
       image: null,
       nickname: '',
@@ -99,7 +99,7 @@ export default () => {
   useEffect(() => {
     const loadData = async () => {
       const { data } = await axios(
-        `http://localhost:3001/user/profile/bybalance/${user.sub}`
+        `/user/profile/bybalance/${user.sub}`
       );
       setUserInfo(data);
     };
@@ -108,7 +108,7 @@ export default () => {
   
   useEffect(() =>{
     const loadData = async () =>{
-        const {data} = await axios(`http://localhost:3001/user/bytransaction/${user.sub}`);
+        const {data} = await axios(`/user/bytransaction/${user.sub}`);
         setRolUser(data.rol);
     }
     loadData();

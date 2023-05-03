@@ -21,7 +21,7 @@ function Favorites(props) {
     const getFav = async () => {
       console.log(user.sub);
       const fav = await axios.get(
-        `http://localhost:3001/user/favorites/${user.sub}`
+        `/user/favorites/${user.sub}`
       );
       setArrFav(fav.data.listFavorites);
       setBalance(fav.data.balance.balance);
@@ -40,7 +40,7 @@ function Favorites(props) {
     const idVideogames = arrFav.map((fav) => fav.id);
     console.log(idVideogames);
     try {
-      const response = await axios.post("http://localhost:3001/checkout/buy", {
+      const response = await axios.post("/checkout/buy", {
         idVideogame: idVideogames,
         idUser: user.sub,
       });
@@ -54,7 +54,7 @@ function Favorites(props) {
     try {
       for (const elem of props.myFavorites) {
         const { id } = elem;
-        await axios.delete("http://localhost:3001/user/favorites", {
+        await axios.delete("/user/favorites", {
           data: { idVideogame: id, idUser: user.sub },
         });
       }

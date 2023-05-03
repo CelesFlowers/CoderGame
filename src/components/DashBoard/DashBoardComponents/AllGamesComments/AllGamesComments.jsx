@@ -21,7 +21,7 @@ export default () => {
       useEffect(() =>{
         const sub = user?.sub
         const loadData = async () =>{
-            const {data} = await axios.get('http://localhost:3001/admin/allvideogames/' + sub);
+            const {data} = await axios.get('/admin/allvideogames/' + sub);
             setUserInfo(data);
         }
         loadData();

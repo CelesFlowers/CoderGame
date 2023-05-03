@@ -19,7 +19,7 @@ const DashBoard = () => {
   useEffect(() => {
     const loadData = async () => {
       const { data } = await axios(
-        `http://localhost:3001/user/rol/${user.sub}`
+        `/user/rol/${user.sub}`
       );
       setUserInfo(data);
     };

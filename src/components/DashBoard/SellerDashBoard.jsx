@@ -15,7 +15,7 @@ const SellerDashBoard = () => {
     const fetchData = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3001/empresa/ventas/${sub}`
+          `/empresa/ventas/${sub}`
         );
         setData(data);
       } catch (error) {

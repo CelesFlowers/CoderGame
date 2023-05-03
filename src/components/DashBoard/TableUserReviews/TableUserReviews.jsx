@@ -23,7 +23,7 @@ const TableUserReviews = () => {
   useEffect(() => {
     const loadData = async () => {
       const { data } = await axios(
-        `http://localhost:3001/user/buyer/${user.sub}`
+        `/user/buyer/${user.sub}`
       );
       setUserInfo(data);
     };
@@ -31,7 +31,7 @@ const TableUserReviews = () => {
   }, [user.sub]);
 
   const handleDeleteReview = async (id) => {
-    await axios.delete(`http://localhost:3001/comment`, {
+    await axios.delete(`/comment`, {
       data: {
         sub: user.sub,
         id,

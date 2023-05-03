@@ -13,7 +13,7 @@ export default function Balance () {
     useEffect(() =>{
         const sub = user?.sub
         const loadData = async () =>{
-            const {data} = await axios.get('http://localhost:3001/admin/allusers/' + sub);
+            const {data} = await axios.get('/admin/allusers/' + sub);
             setUserInfo(data);
         }
         loadData();

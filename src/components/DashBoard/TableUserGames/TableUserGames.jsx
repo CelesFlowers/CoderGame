@@ -28,7 +28,7 @@ const TableUserGames = () => {
   useEffect(() => {
     const loadData = async () => {
       const { data } = await axios(
-        `http://localhost:3001/user/buyer/${user.sub}`
+        `/user/buyer/${user.sub}`
       );
       setUserInfo(data);
     };

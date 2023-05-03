@@ -27,7 +27,7 @@ export default () => {
 
     useEffect(() =>{
         const loadData = async () =>{
-            const {data} = await axios(`http://localhost:3001/user/bytransaction/${user.sub}`);
+            const {data} = await axios(`/user/bytransaction/${user.sub}`);
             setUserInfo(data);
         }
         loadData();

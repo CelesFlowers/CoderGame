@@ -32,7 +32,7 @@ export default () => {
   useEffect(() =>{
     const sub = user?.sub
     const loadData = async () =>{
-        const {data} = await axios.get('http://localhost:3001/admin/allusers/' + sub);
+        const {data} = await axios.get('/admin/allusers/' + sub);
         setUserInfo(data);
     }
     loadData();
@@ -74,7 +74,7 @@ export default () => {
                   value === '1' ? type = 'client' : value === '2' ? type = 'seller' : type = 'admin';
                   
                   try {
-                    const response = await axios.put("http://localhost:3001/user/"+ item?.sub, {
+                    const response = await axios.put("/user/"+ item?.sub, {
                       rol : type
                     })
                     alert('Your change has done');
@@ -101,7 +101,7 @@ export default () => {
                   let bool = null;
                   value === '1' ? bool = false : bool = true;
                   try {
-                    const response = await axios.put("http://localhost:3001/user/"+ item?.sub, {
+                    const response = await axios.put("/user/"+ item?.sub, {
                       banned : bool
                     })
                     alert('Your change has done');
@@ -122,7 +122,7 @@ export default () => {
                 <button onClick={
                   async () => {
                     try {
-                      const response = await axios.put("http://localhost:3001/user/"+ item?.sub, {
+                      const response = await axios.put("/user/"+ item?.sub, {
                         deleted : true
                       })
                       alert('Your change has done');

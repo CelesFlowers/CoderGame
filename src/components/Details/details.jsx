@@ -36,7 +36,7 @@ const formErrorHandle = (event) =>{
 const sendReport = async (event) =>{
     setComment(-1)
     const obj = { comment: event.target.id, text: event.target.value }
-    const response = await axios.post('http://localhost:3001/email/report/comment', obj )
+    const response = await axios.post('/email/report/comment', obj )
     
     
 }
