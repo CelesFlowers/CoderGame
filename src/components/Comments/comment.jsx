@@ -11,7 +11,7 @@ const Comments = ({ id }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:3001/videogames/comentario`, {
+      await axios.post(`/videogames/comentario`, {
         sub: user.sub,
         idVideogame: parseInt(id),
         comentario: comment
