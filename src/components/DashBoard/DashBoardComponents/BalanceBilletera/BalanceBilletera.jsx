@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React from "react";
 import { BadgeDelta, Card, Flex, Metric, Text } from '@tremor/react';
 import { useState } from "react";
@@ -37,3 +38,5 @@ export default function Balance () {
         </>
     )
 };
+=======
+>>>>>>> 737fa09806a610130f3c6518d147a22beabc2bfd

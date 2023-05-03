@@ -108,8 +108,13 @@ export default () => {
   
   useEffect(() =>{
     const loadData = async () =>{
+<<<<<<< HEAD
         const {data} = await axios(`/user/bytransaction/${user.sub}`);
         setRolUser(data.rol);
+=======
+        const {data} = await axios(`http://localhost:3001/user/bytransaction/${user.sub}`);
+        setRolUser(data);
+>>>>>>> 737fa09806a610130f3c6518d147a22beabc2bfd
     }
     loadData();
 },[]);
@@ -120,11 +125,12 @@ export default () => {
       image: e.target.files[0],
     }));
   };
-
+  console.log(rolUser)
   return (
     <div className={style.container}>
       <div className="text-center">
         <img className={style.profileImg} src={userInfo?.profile.image || user?.picture} alt="F" />
+        <br />
         <button onClick={editHandler}>
           <img className={style.pencil} src={pencil} alt="" />
         </button>
@@ -179,11 +185,15 @@ export default () => {
         <Text>{userInfo?.profile.linkYoutube}</Text>
         <p>Description: </p>
         <Text>{userInfo?.profile.description}</Text>
-        {rolUser === 'client' && <button
-        onClick={() => {
+        {rolUser?.rol === 'client' && !rolUser?.requestSeller && <button
+        onClick={ async () => {
+          const sub = user?.sub;
+          const response = await axios.post('http://localhost:3001/email/request/seller', {sub})
           alert('An admin will be in touch as soon as posible.')
         }}
         >Sell your games with us!!</button>}
+        <br />
+        <br />
         <Logout />
       </div>
     </div>
