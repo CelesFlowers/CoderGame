@@ -184,7 +184,7 @@ export default () => {
         {rolUser?.rol === 'client' && !rolUser?.requestSeller && <button
         onClick={ async () => {
           const sub = user?.sub;
-          const response = await axios.post('http://localhost:3001/email/request/seller', {sub})
+          const response = await axios.post('/email/request/seller', {sub})
           alert('An admin will be in touch as soon as posible.')
         }}
         >Sell your games with us!!</button>}
