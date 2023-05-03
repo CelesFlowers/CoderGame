@@ -76,7 +76,7 @@ export default () => {
                             async () => {
                                 const sub = user?.sub;
                               try {
-                                const response = await axios.put("http://localhost:3001/videogames/"+ item?.id,  {sub} )
+                                const response = await axios.put("/videogames/"+ item?.id,  {sub} )
                                 alert('Game has been deleted');
                               } catch (error) {
                                 window.alert(error.response.data);

@@ -108,13 +108,8 @@ export default () => {
   
   useEffect(() =>{
     const loadData = async () =>{
-<<<<<<< HEAD
         const {data} = await axios(`/user/bytransaction/${user.sub}`);
         setRolUser(data.rol);
-=======
-        const {data} = await axios(`http://localhost:3001/user/bytransaction/${user.sub}`);
-        setRolUser(data);
->>>>>>> 737fa09806a610130f3c6518d147a22beabc2bfd
     }
     loadData();
 },[]);

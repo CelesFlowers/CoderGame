@@ -114,16 +114,8 @@ export const searchVideogames = (value) => {
 
 export const postUser = (payload, token) => {
   return async (dispatch) => {
-<<<<<<< HEAD
     const info = await axios.post("/user/register", payload, token);
     console.log(info);
-=======
-    const info = await axios.post(
-      "http://localhost:3001/user/register",
-      payload,
-      token
-    );
->>>>>>> 7d4132cc09d76cc4f411969bd189f38908d8a643
     return {
       type: POST_USER,
       payload,
@@ -155,15 +147,8 @@ export const setPage = (payload) => {
 
 export const buyCoin = (payload) => {
   return async (dispatch) => {
-<<<<<<< HEAD
     const buy = await axios.post('/create-checkout-session', payload);
     console.log(payload, 'hola')
-=======
-    const buy = await axios.post(
-      "http://localhost:3001/create-checkout-session",
-      payload
-    );
->>>>>>> 7d4132cc09d76cc4f411969bd189f38908d8a643
     return buy;
   };
 };

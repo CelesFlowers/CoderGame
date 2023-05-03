@@ -15,7 +15,7 @@ export default function NavBar() {
   useEffect(() => {
     const loadData = async () => {
       const { data } = await axios(
-        `http://localhost:3001/user/bytransaction/${user?.sub}`
+        `/user/bytransaction/${user?.sub}`
       );
       setRolUser(data);
     };

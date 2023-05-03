@@ -44,7 +44,7 @@ export default () => {
   const handlerDelet = async (id, sub) => {
     try {
       const res = await axios.put(
-        `http://localhost:3001/videogames/delete/${id}`,
+        `/videogames/delete/${id}`,
         { sub }
       );
       setDeleted((prevState) => ({ ...prevState, [id]: !prevState[id] }));
