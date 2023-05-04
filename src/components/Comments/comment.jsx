@@ -22,19 +22,20 @@ const Comments = ({ id }) => {
       console.error(error);
     }
   };
-
   return (
     <div>
       {isAuthenticated ? (
         <form onSubmit={handleSubmit}>
-          <div>
-            <label>Comment:</label>
+          <div className="text-center">
+            <label >Review : </label>
+            <p></p>
             <textarea
               value={comment}
               onChange={(e) => setComment(e.target.value)}
             />
-          </div>
-          <button type="submit">Submit</button>
+          </div >
+          <div className="text-center">
+          <button type="submit">Submit</button> </div>
         </form>
       ) : (
         <p>Please log in to leave a comment</p>
@@ -43,5 +44,25 @@ const Comments = ({ id }) => {
     </div>
   );
 };
+//   return (
+//     <div>
+//       {isAuthenticated ? (
+//         <form onSubmit={handleSubmit}>
+//           <div>
+//             <label>Comment:</label>
+//             <textarea
+//               value={comment}
+//               onChange={(e) => setComment(e.target.value)}
+//             />
+//           </div>
+//           <button type="submit">Submit</button>
+//         </form>
+//       ) : (
+//         <p>Please log in to leave a comment</p>
+//       )}
 
-export default Comments;
+//     </div>
+//   );
+// };
+
+// export default Comments;
