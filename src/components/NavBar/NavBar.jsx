@@ -12,12 +12,24 @@ export default function NavBar() {
   const { user } = useAuth0();
   const [rolUser, setRolUser] = useState(null);
 
+  // useEffect(() => {
+  //   const loadData = async () => {
+  //     const { data } = await axios(
+  //       `/user/bytransaction/${user?.sub}`
+  //     );
+  //     setRolUser(data);
+  //   };
+  //   loadData();
+  // }, [user?.sub]);
+
   useEffect(() => {
     const loadData = async () => {
-      const { data } = await axios(
-        `/user/bytransaction/${user?.sub}`
-      );
-      setRolUser(data);
+      if (user) {
+        const { data } = await axios(
+          `/user/bytransaction/${user?.sub}`
+        );
+        setRolUser(data);
+      }
     };
     loadData();
   }, [user?.sub]);
