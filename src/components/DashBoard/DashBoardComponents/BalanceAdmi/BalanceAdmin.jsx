@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import axios from "axios";
-
+import Style from "./BalanceAdmin.module.css"
 
 export default function Balance ()  {
     const [userInfo, setUserInfo] = useState('');
@@ -21,7 +21,7 @@ export default function Balance ()  {
     }, []);
 
     return(
-        <>
+        <div className={Style.container}>
         {userInfo ? (
             <Table>
         {userInfo.map((item) => (
@@ -40,6 +40,6 @@ export default function Balance ()  {
             <p>Loading...</p>
         )}
         
-        </>
+        </div>
     )
 };
