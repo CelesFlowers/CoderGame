@@ -21,19 +21,19 @@ export default function Balance ()  {
     }, []);
 
     return(
-        <div className={Style.container}>
+        <div>
         {userInfo ? (
             <Table>
         {userInfo.map((item) => (
             
-        <Card className="max-w-xs mx-auto" decoration="top" decorationColor="indigo">
+        <div className={Style.container} decoration="top" decorationColor="indigo">
             <Text>totalAmount</Text>
             <Metric>${item.totalAmount}</Metric>
             <Text>transactionCount</Text>
             <Metric>{item.transactionCount}</Metric>
             <Text>averageAmount</Text>
             <Metric>{item.averageAmount.substring(0, 6)}</Metric>
-        </Card>
+        </div>
         ))}
         </Table>
         ):(
