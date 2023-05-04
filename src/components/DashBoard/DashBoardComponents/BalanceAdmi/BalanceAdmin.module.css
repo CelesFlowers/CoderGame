@@ -2,6 +2,7 @@
     border: 3px solid red;
     background-color: rgb(37, 37, 37);
     border-radius: 10px;
-    margin: auto;
-    padding: auto;
+    margin: 1%;
+    padding: 1%;
+    color:white;
 }
