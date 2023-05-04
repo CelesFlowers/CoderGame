@@ -31,11 +31,9 @@ const TableUserReviews = () => {
   }, [user.sub]);
 
   const handleDeleteReview = async (id) => {
-    await axios.delete(`/comment`, {
-      data: {
+    await axios.put(`/comment`, {    
         sub: user.sub,
-        id,
-      },
+        id,      
     });
 
     const updatedCommentsGame = userInfo.comments.filter(
