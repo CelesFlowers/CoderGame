@@ -34,8 +34,9 @@ function CoinBuyer() {
     }
   
     return (
-      <div className={style.container}>
+      <div>
         <NavBar/>
+      <div className={style.container}>            
         <div>
             <h3>Please insert how many coins do you want to buy.</h3>
             <p>Min 10 coins</p>
@@ -49,6 +50,7 @@ function CoinBuyer() {
             <CheckoutForm />
           </Elements>
         )}
+      </div>
       </div>
     );
   }
