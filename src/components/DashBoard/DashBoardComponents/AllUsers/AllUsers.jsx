@@ -1,5 +1,4 @@
 import {
-  Card,
   Table,
   TableHead,
   TableRow,
@@ -25,16 +24,12 @@ import checked from './checked.svg';
 export default () => {
   const {user} = useAuth0();
   const [userInfo, setUserInfo] = useState(null);
-  const [show, setShow] = useState(false);
-
-  const showBtn = () => {
-    show ? setShow(false) : setShow(true);
-  }
+  //const [show, setShow] = useState(false);
 
   useEffect(() =>{
     const sub = user?.sub
     const loadData = async () =>{
-        const {data} = await axios.get('/admin/allusers/' + sub);
+        const {data} = await axios.get('http://localhost:3001/admin/allusers/' + sub);
         setUserInfo(data);
     }
     loadData();
@@ -45,9 +40,7 @@ export default () => {
     <div className={style.container}>
         <div className={style.titlebox}>
           <Title>All Users</Title>
-          <button onClick={showBtn}><img src={plus} alt="" /></button>
         </div>
-        {show && 
         <Table>
         <TableHead>
           <TableRow>
@@ -76,7 +69,7 @@ export default () => {
                   value === '1' ? type = 'client' : value === '2' ? type = 'seller' : type = 'admin';
                   
                   try {
-                    const response = await axios.put("/user/"+ item?.sub, {
+                    const response = await axios.put("http://localhost:3001/user/"+ item?.sub, {
                       rol : type
                     })
                     alert('Your change has done');
@@ -108,7 +101,7 @@ export default () => {
                   let bool = null;
                   value === '1' ? bool = false : bool = true;
                   try {
-                    const response = await axios.put("/user/"+ item?.sub, {
+                    const response = await axios.put("http://localhost:3001/user/"+ item?.sub, {
                       banned : bool
                     })
                     alert('Your change has done');
@@ -129,7 +122,7 @@ export default () => {
                 <button onClick={
                   async () => {
                     try {
-                      const response = await axios.put("/user/"+ item?.sub, {
+                      const response = await axios.put("http://localhost:3001/user/"+ item?.sub, {
                         deleted : true
                       })
                       alert('Your change has done');
@@ -144,6 +137,6 @@ export default () => {
             </TableRow>
           ))}
         </TableBody>
-      </Table>}
+      </Table>
       </div>
 )};

@@ -34,13 +34,13 @@ function CoinBuyer() {
     return (
       <div className={style.container}>
         <div>
-          <h3>Ingrese la cantidad deseada de CoderCoins a comprar</h3>
-          <p>Ingresa una cantidad mayor a 10 coins</p>
-          <input autocomplete="off" type="number" name="coins" className={style.inp} placeholder='Ingrese Cantidad Aquí' onChange={handleChange} />
-          <p>coins</p>
-          <p>Su total es de : {input} USD</p>
-          <button disabled={inputError} className={style.btn} onClick={handleClick}>Confirmar</button>
-        </div>
+            <h3>Please insert how many coins do you want to buy.</h3>
+            <p>Min 10 coins</p>
+            <input autocomplete="off" type="number" name="coins" className={style.inp} placeholder='Ingrese Cantidad Aquí' onChange={handleChange} />
+            <p>coins</p>
+            <p>Total : {input} USD</p>
+            <button disabled={inputError} className={style.btn} onClick={handleClick}>Confirmar</button>
+          </div>
         {clientSecret && stripePromise  && (
           <Elements stripe={stripePromise} options={{ clientSecret }} >
             <CheckoutForm />
