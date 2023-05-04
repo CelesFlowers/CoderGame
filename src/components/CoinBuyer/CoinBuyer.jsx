@@ -7,6 +7,8 @@ import axios from "axios";
 import { useAuth0 } from "@auth0/auth0-react";
 import CheckoutForm from "./CheckoutForm";
 import { useEffect } from "react";
+import NavBar from "../NavBar/NavBar";
+
 
 function CoinBuyer() {
     const {user} = useAuth0()
@@ -33,6 +35,7 @@ function CoinBuyer() {
   
     return (
       <div className={style.container}>
+        <NavBar/>
         <div>
             <h3>Please insert how many coins do you want to buy.</h3>
             <p>Min 10 coins</p>

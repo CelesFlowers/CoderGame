@@ -33,7 +33,7 @@ const Slider = ({maped}) => {
 
     return(
         <div className="text-center">
-            <div className='text-center btn btn-danger'>Recomendados</div>
+            <div className='text-center btn btn-danger'>Recommended</div>
             {maped?.map((imagen, index) => {
                 return(
                     <Link className={currImg === index ? style.container : style.noCurrent} key={index} to={'/game/'+imagen?.id}>
